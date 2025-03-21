@@ -1,67 +1,68 @@
 <?php
 
+
 $cidade1 = array(
     "nome" => 'Foz do Iguaçu',
-    "habitantes" => 250.000,
+    "habitantes" => 250000,
     "area" => '500km2',
     "altitude" => '145m',
     "estado" => 'Paraná-PR'
 );
 
 $cidade2 = array(
-    "nome" => 'Foz do Iguaçu',
-    "habitantes" => 250.000,
-    "area" => '500km2',
-    "altitude" => '145m',
+    "nome" => 'Cascavel',
+    "habitantes" => 300000,
+    "area" => '420km2',
+    "altitude" => '320m',
     "estado" => 'Paraná-PR'
 );
 
 $cidade3 = array(
-    "nome" => 'Foz do Iguaçu',
-    "habitantes" => 250.000,
-    "area" => '500km2',
-    "altitude" => '145m',
-    "estado" => 'Paraná-PR'
+    "nome" => 'Chapecó',
+    "habitantes" => 240000,
+    "area" => '120km2',
+    "altitude" => '620m',
+    "estado" => 'Santa Catarina-SC'
 );
 
 $cidade4 = array(
-    "nome" => 'Foz do Iguaçu',
-    "habitantes" => 250.000,
-    "area" => '500km2',
-    "altitude" => '145m',
-    "estado" => 'Paraná-PR'
+    "nome" => 'Blumenau',
+    "habitantes" => 330000,
+    "area" => '200km2',
+    "altitude" => '85m',
+    "estado" => 'Santa Catarina-SC'
 );
 
 $cidade5 = array(
-    "nome" => 'Foz do Iguaçu',
-    "habitantes" => 250.000,
-    "area" => '500km2',
-    "altitude" => '145m',
+    "nome" => 'Curitiba',
+    "habitantes" => 1500000,
+    "area" => '300km2',
+    "altitude" => '300m',
     "estado" => 'Paraná-PR'
 );
 
 $cidades = array($cidade1, $cidade2, $cidade3, $cidade4, $cidade5);
 
+/*print "<h1>Lista de cidades</h1>";
+
+print "<table border=1>";
+print "<tr>";
+print "<td>Nome</td>";
+print "<td>Habitantes</td>";
+print "<td>Área</td>";
+print "<td>Altitude</td>";
+print "<td>Estado</td>";
+print "</tr>";
+print "<tr>";
+
 foreach ($cidades as $c) {
-    print "<table>
-    <tr>
-      <th>Nome</th>
-      <th>Habitantes</th>
-      <th>Área</th>
-      <th>Altitude</th>
-      <th>Estado</th>
-    </tr>
-    <tr>
-      <td>$c[nome]</td>
-      <td>$c[habitantes]</td>
-      <td>$c[area]</td>
-      <td>$c[altitude]</td>
-      <td>$c[estado]</td>
-    </tr>
-    <tr>
-      <td>Centro comercial Moctezuma</td>
-      <td>Francisco Chang</td>
-      <td>Mexico</td>
-    </tr>
-  </table>";
+print "<tr>";
+      print "<td>$c[nome]</td>";
+      print "<td>$c[habitantes]</td>";
+      print "<td>$c[area]</td>";
+      print "<td>$c[altitude]</td>";
+      print "<td>$c[estado]</td>";
+      print "</tr>";
+  
 }
+    print "</table>";*/
