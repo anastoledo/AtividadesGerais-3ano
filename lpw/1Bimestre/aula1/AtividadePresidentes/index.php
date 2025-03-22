@@ -32,8 +32,7 @@ function desenhaLinha($dadosPresidentes)
     print "</tr>";
 }
 
-
-// Programa principal:
+// Programa principal
 echo "<h1>  Presidentes </h1>";
 
 echo "<table border='1'>";
@@ -50,7 +49,5 @@ foreach ($presidentes as $p) {
   desenhaLinha($p);
 
 }
-
-
 
 echo "</table>";
