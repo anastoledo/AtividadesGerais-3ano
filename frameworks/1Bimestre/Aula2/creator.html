@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PageMaker</title>
+    <title>Page Maker</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <script src="funcoes.js"></script>
     <style>
+
         body {
             background-color: #E4E9BE;
         }
@@ -110,8 +111,10 @@
                     </div>
 
                     <label class="label">Estilo do link</label>
-                    <label class="checkbox"><input type="checkbox" id="estiloLinks" value="1"> Sublinhado</label><br>
-                    <label class="checkbox"><input type="checkbox" name="estiloLinks" value="0"> Não Sublinhado</label><br>
+
+                    <label class="checkbox"><input type="checkbox" name="estiloLinks" id="estiloLinks" value="1"> Sublinhado</label><br>
+                    <label class="checkbox"><input type="checkbox" name="estiloLinks" id="estiloLinks"  value="0"> Não Sublinhado</label><br>
+                    <br>
                     <button class="button" onclick="gerarCodigo()">Gerar código</button>
                     
                 </div>
