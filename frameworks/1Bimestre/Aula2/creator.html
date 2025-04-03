@@ -39,12 +39,20 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="navbar-brand">
+        <div class="navbar-start">
             <a class="navbar-item">Bem-vindo!</a>
         </div>
     </nav>
     
     <div class="container mt-5">
+
+                <div class="box">
+                    <h1 class="title">Arquivo HTML</h1>
+                    <label class="label">Nome do arquivo</label>
+                    <input type="text" id="nomeHTML" name="nomeHTML">
+                     <br>
+                </div>
+         
         <div class="columns is-multiline is-variable is-6">
             <div class="column is-half">
                 <div class="box">
@@ -96,7 +104,15 @@
                 <div class="box">
                     <h1 class="title">Links</h1>
                     <label class="label">Texto para links</label>
-                    <input class="input" type="text" id="links" placeholder="link1;link2;link3...">
+
+                    <input class="input" type="text" name="links" id="links">
+                    <label class="label">Arquivo para links</label>
+                    <input class="input" type="file" name="href" id="href"><br>
+                    <br>
+                    <button class="button" id="btn" name="btn" onclick="GerarInput()">Adicionar mais
+                    </button>
+                    <br>
+                    <br>
                     <label class="label">Cor do link</label>
                     <div class="select">
                         <select id="corLinks">
@@ -121,12 +137,12 @@
             </div>
         </div>
         
-        <div class="columns is-variable is-6">
+        <div class="columns is-multiline is-variable is-6">
             <div class="column is-half">
                 <div class="box">
                     <h2 class="title">HTML</h2>
                     <textarea class="textarea" rows="10" id="codeHTML"></textarea><br>
-                    <button class="button is-link" onclick="download('codeHTML','index.html')">Download do código</button>
+                    <button class="button is-link" onclick="download('codeHTML','')">Download do código</button>
                 </div>
             </div>
             
