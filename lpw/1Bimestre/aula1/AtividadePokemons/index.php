@@ -12,6 +12,8 @@ function desenhaLinha($dadosPokemons)
     print "</tr>";
 }
 
+print '<link rel="stylesheet" href="style.css">';
+
 $pokemons = array();
 
 $p1 = new Pokemon();
