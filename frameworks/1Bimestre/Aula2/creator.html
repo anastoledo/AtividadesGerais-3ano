@@ -104,14 +104,15 @@
                 <div class="box">
                     <h1 class="title">Links</h1>
                     <label class="label">Texto para links</label>
-
+                    <div id="areaLinks">
                     <input class="input" type="text" name="links" id="links">
-                    <label class="label">Arquivo para links</label>
-                    <input class="input" type="file" name="href" id="href"><br>
                     <br>
-                    <button class="button" id="btn" name="btn" onclick="GerarInput()">Adicionar mais
-                    </button>
-                    <br>
+                        <br>
+                        <label class="checkbox"><input type="checkbox" id="noLinks" onclick="removeLinks(this)">Essa página não possui link</label>
+                        <br><br>
+                        <label class="label">Arquivo para links</label>
+                        <input class="input" type="file" name="href" id="href"><button class="button" onclick="criarLinks()">+</button>
+                        <br>
                     <br>
                     <label class="label">Cor do link</label>
                     <div class="select">
@@ -131,8 +132,19 @@
                     <label class="checkbox"><input type="checkbox" name="estiloLinks" id="estiloLinks" value="1"> Sublinhado</label><br>
                     <label class="checkbox"><input type="checkbox" name="estiloLinks" id="estiloLinks"  value="0"> Não Sublinhado</label><br>
                     <br>
+                </div>
+
+                    <h1 class="title">Conteúdo</h1>
+                    <br>
+                    <textarea class="textarea" id="txtConteudo" cols="50" rows="15"></textarea>
+                    <br>
+                    <br>
+                    <h1 class="title">Imagens</h1>
+                    <label class="label">Arquivo da imagem</label>
+                    <input class="input" type="file" id="arquivoImagem">
+                    <br>
+                    <br>
                     <button class="button" onclick="gerarCodigo()">Gerar código</button>
-                    
                 </div>
             </div>
         </div>
