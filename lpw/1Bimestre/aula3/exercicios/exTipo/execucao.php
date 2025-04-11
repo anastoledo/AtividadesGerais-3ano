@@ -31,7 +31,7 @@ if (isset($_GET['tipo']) and isset($_GET['nome']) and isset($_GET['sobrenome']) 
             print "Nome completo: " . $pessoa['nome'] ." ". $pessoa['sobrenome'] . "\n" . "<br> Idade: " . $pessoa['idade'];
         }
         else{
-            print "Precisa ser A ou C!";
+            print "O parâmetro [tipo] precisa ser A ou C!";
         }
     }
     else{
