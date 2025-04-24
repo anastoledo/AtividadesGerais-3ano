@@ -18,11 +18,11 @@
 <div id="containerForm">
     <h1>Arquivo HTML</h1>
     Nome do arquivo HTML
-    <input type="text" id="nomeHTML" name="nomeHTML"><br>
+    <input type="text" id="nomeHTML" name="nomeHTML" required><br>
 
     <h1>Cabecalho</h1>
     Cor de fundo
-    <select id="corFundo" name="corFundo">
+    <select id="corFundo" name="corFundo" required>
        <option>--</option>
        <option value="#FF0000" style="background-color: #FF0000; color: white;">Vermelho</option>
        <option value="#00FF00" style="background-color: #00FF00;">Verde</option>
@@ -32,9 +32,9 @@
        <option value="#800080" style="background-color: #800080; color: white;">Roxo</option>
     </select><br>
     Texto para cabeçalho
-    <input type="text" id="textoCabecalho" name="textoCabecalho"><br>
+    <input type="text" id="textoCabecalho" name="textoCabecalho" required><br>
     Cor da Fonte
-     <select id="corFonte" name="corFonte">
+     <select id="corFonte" name="corFonte" required>
         <option>--</option>
         <option value="#FF0000" style="background-color: #FF0000; color: white;">Vermelho</option>
         <option value="#00FF00" style="background-color: #00FF00;">Verde</option>
@@ -44,7 +44,7 @@
         <option value="#800080" style="background-color: #800080; color: white;">Roxo</option>
      </select><br>
      Tamanho Fonte
-     <select id="tamFonte" name="tamFonte">
+     <select id="tamFonte" name="tamFonte" required>
         <option>--</option>
         <option value="12">12</option>
         <option value="13">13</option>
@@ -57,10 +57,10 @@
      <h1>Links</h1>
         Texto para o links<br>
         Esta página não tem Links
-    <input type="checkbox" id="noLinks" onclick="removeLinks(this)"><br>
+    <input type="checkbox" id="noLinks" onclick="removeLinks(this)" ><br>
      <div id="areaLinks">
         Cor do link
-        <select id="corLinks" name="corLinks">
+        <select id="corLinks" name="corLinks" >
             <option>--</option>
             <option value="#FF0000" style="background-color: #FF0000; color: white;">Vermelho</option>
             <option value="#00FF00" style="background-color: #00FF00;">Verde</option>
@@ -81,9 +81,9 @@
      </div>
     <h1>Conteúdo</h1><br>
     <textarea id="txtConteudo" cols="50" rows="10"></textarea><br>
-    Imagem: <input type="file" id="imagem"><br>
-    Largura: <input type="number" name="" id="largura">
-    Altura: <input type="number" id="altura">
+    Imagem: <input type="file" id="imagem" required><br>
+    Largura: <input type="number" name="" id="largura" required>
+    Altura: <input type="number" id="altura" required>
     <hr>
 </div>
 

@@ -39,6 +39,9 @@ function configHTMLCabecalho(){
 function configHTMLConteudo(){
     txtConteudo="";
     txtConteudo=document.querySelector("#txtConteudo").value;
+    img=document.getElementById("imagem").value;
+    img=img.split("\\");
+    txtConteudo+=" <img>";
     return txtConteudo;
 }
  function gerarCodigo(){
