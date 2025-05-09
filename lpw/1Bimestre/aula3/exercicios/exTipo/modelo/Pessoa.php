@@ -11,6 +11,8 @@ Class Pessoa {
         $this->idade = $idade;
     }
 
+   
+
     public function __toString() {
         $pessoa = "Nome completo: " . $this->nome ." ". $this->sobrenome . "\n" . "<br> Idade: " . $this->idade; 
         return $pessoa;
