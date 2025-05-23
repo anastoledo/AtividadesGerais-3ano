@@ -10,7 +10,7 @@ $sql =  "SELECT * FROM livros";
 $stm = $con->prepare($sql);
 $stm->execute();
 $livros = $stm->fetchAll();
-echo "<pre>" . print_r($livros, true) . "</pre>";
+//echo "<pre>" . print_r($livros, true) . "</pre>";
 
 //Verificar se o usuário já clicou no registrar
 if(isset($_POST["titulo"])){
@@ -19,12 +19,16 @@ if(isset($_POST["titulo"])){
     $titulo = $_POST["titulo"];
     $genero = $_POST["genero"];
     $qtdPag = $_POST["paginas"];
+    $autor = $_POST["autor"];
 
     //Inserir as informações na base de dados
-    $sql = "INSERT INTO livros (titulo, genero, qtd_paginas)
-            VALUES (?,?,?)";
+    $sql = "INSERT INTO livros (titulo, genero, qtd_paginas, autor)
+            VALUES (?,?,?,?)";
     $stm = $con->prepare($sql);
-    $stm->execute(array($titulo, $genero, $qtdPag));
+    $stm->execute(array($titulo, $genero, $qtdPag,$autor));
+
+    //Redirecionar para a mesma página a fim de limpar o buffer do navegador
+    header("location: index.php");
 
 }
 
@@ -47,6 +51,8 @@ if(isset($_POST["titulo"])){
             <th>Título</th>
             <th>Gênero</th>
             <th>Páginas</th>
+            <th>Autor</th>
+            <th>Excluir</th>
         </tr>
 
         <?php foreach($livros as $l) : ?>   <!-- O : é pra não usar chave -->
@@ -54,8 +60,30 @@ if(isset($_POST["titulo"])){
             <tr>
                 <td><?= $l["id"] ?></td>   <!-- O igual é basicamente para escrever sem escrever php -->
                 <td><?= $l["titulo"] ?></td> 
-                <td><?= $l["genero"] ?></td> 
+
+                <td>
+                <?php
+                switch ($l["genero"]) {
+                    case 'D':
+                        echo "Drama";
+                        break;
+                    case 'F':
+                        echo "Ficção";
+                        break;
+                    case 'R':
+                        echo "Romance";
+                        break;
+                    case 'O':
+                        echo "Outro";
+                        break;
+                }
+                 ?>
+                </td> 
                 <td><?= $l["qtd_paginas"] ?></td> 
+                <td><?= $l["autor"] ?></td> 
+                <td>
+                    <a href='excluir.php?id=<?=$l["id"]?>' onclick="return confirm('Confirma a exclusão?')"><button>Excluir</button></a>  <!-- dentro das tags usar aspas simples '' -->
+                </td>
             </tr>
 
 
@@ -69,6 +97,11 @@ if(isset($_POST["titulo"])){
         <div style="margin-bottom: 10px;">
             <label for="titulo">Informe o título</label>
             <input name="titulo" type="text" id="titulo"/>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="autor">Informe o autor</label>
+            <input name="autor" type="text" id="autor"/>
         </div>
 
         <div style="margin-bottom: 10px;">
