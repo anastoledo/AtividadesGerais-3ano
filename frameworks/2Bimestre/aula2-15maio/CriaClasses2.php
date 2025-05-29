@@ -16,7 +16,7 @@ class criaClasses1 {
         $tabelas = $query->fetchAll(PDO::FETCH_OBJ);
 
         foreach($tabelas as $tabela){
-            $nomeTabela = ucfirst($tabela->{$this->tbBanco});
+            $nomeTabela = ucfirst($tabela->{$this->tbBanco});  //ucfirst coloca o primeiro caracter em maiusculo
             $conteudo = <<<EOT
 class {$nomeTabela} { 
 }
