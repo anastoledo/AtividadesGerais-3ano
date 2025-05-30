@@ -11,6 +11,7 @@ $stm = $con->prepare($sql);
 $stm->execute();
 $livros = $stm->fetchAll();
 //echo "<pre>" . print_r($livros, true) . "</pre>";
+$msgErro = "";
 
 //Verificar se o usuário já clicou no registrar
 if(isset($_POST["titulo"])){
@@ -21,14 +22,48 @@ if(isset($_POST["titulo"])){
     $qtdPag = $_POST["paginas"];
     $autor = $_POST["autor"];
 
-    //Inserir as informações na base de dados
-    $sql = "INSERT INTO livros (titulo, genero, qtd_paginas, autor)
-            VALUES (?,?,?,?)";
-    $stm = $con->prepare($sql);
-    $stm->execute(array($titulo, $genero, $qtdPag,$autor));
+    //Validar os dados
+    $erros = array();
 
-    //Redirecionar para a mesma página a fim de limpar o buffer do navegador
-    header("location: index.php");
+    if(! $titulo ){
+        array_push($erros, 'Informe o título!');
+    }
+     if(strlen($titulo) < 3 && strlen($titulo) > 50){
+
+        array_push($erros, 'O título precisa de ao menos 3 caracteres e no máximo 50');
+    }    
+
+    if(! $autor ){
+        array_push($erros, 'Informe o autor!');
+    }
+
+    if(! $genero ){
+        array_push($erros, 'Informe o gênero!');
+    }
+
+    if(! $qtdPag ){
+        array_push($erros, 'Informe o número de páginas!');
+    }
+     if ($qtdPag <= 0 ){
+        array_push($erros, 'O livro precisa ter ao menos 1 página');
+    }
+
+    if(count($erros) == 0){
+        //Inserir as informações na base de dados
+        $sql = "INSERT INTO livros (titulo, genero, qtd_paginas, autor)
+        VALUES (?,?,?,?)";
+        $stm = $con->prepare($sql);
+        $stm->execute(array($titulo, $genero, $qtdPag,$autor));
+
+        //Redirecionar para a mesma página a fim de limpar o buffer do navegador
+        header("location: index.php");
+
+    }
+    else{
+
+        $msgErro = implode("<br>", $erros); //ele vai transformar o array em e string e vai separar a escrita
+        //echo $msgErro;
+    }
 
 }
 
@@ -42,6 +77,7 @@ if(isset($_POST["titulo"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de livros</title>
 </head>
+
 <body>
 
     <h1>Listagem</h1>
@@ -93,6 +129,8 @@ if(isset($_POST["titulo"])){
 
     <h1>Formulário</h1>
 
+    <!--form action="" method="POST" onsubmit="return validarCampos()"-->
+
     <form action="" method="POST">
         <div style="margin-bottom: 10px;">
             <label for="titulo">Informe o título</label>
@@ -124,7 +162,14 @@ if(isset($_POST["titulo"])){
         <div style="margin-bottom: 10px;">
             <button type="submit">Registrar</button>
         </div>
+
     </form>
+
+    <div id="mensagem" style="color: red;">
+        <?= $msgErro ?>
+    </div>
+
+    <script src="js/validacao.js"></script>
     
 </body>
 </html>
