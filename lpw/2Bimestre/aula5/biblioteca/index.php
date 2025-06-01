@@ -17,7 +17,7 @@ $msgErro = "";
 if(isset($_POST["titulo"])){
 
     //Obter os valores digitados pelo usuário
-    $titulo = $_POST["titulo"];
+    $titulo = trim($_POST["titulo"]); //Vai tirar os espaços em branco
     $genero = $_POST["genero"];
     $qtdPag = $_POST["paginas"];
     $autor = $_POST["autor"];
@@ -28,7 +28,7 @@ if(isset($_POST["titulo"])){
     if(! $titulo ){
         array_push($erros, 'Informe o título!');
     }
-     if(strlen($titulo) < 3 && strlen($titulo) > 50){
+     if(strlen($titulo) < 3 || strlen($titulo) > 50){
 
         array_push($erros, 'O título precisa de ao menos 3 caracteres e no máximo 50');
     }    
@@ -46,6 +46,15 @@ if(isset($_POST["titulo"])){
     }
      if ($qtdPag <= 0 ){
         array_push($erros, 'O livro precisa ter ao menos 1 página');
+    }
+
+    //Verificar se já existe o livro
+    $sql = "SELECT * FROM livros WHERE titulo = ?";
+    $stm = $con->prepare($sql);
+    $stm->execute([$titulo]);
+    $livroExiste =  $stm->fetchAll();
+    if(count($livroExiste) > 0){
+    array_push($erros, 'Já existe um livro com esse título');
     }
 
     if(count($erros) == 0){

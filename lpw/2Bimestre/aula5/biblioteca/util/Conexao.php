@@ -19,7 +19,7 @@ class Conexao{
            self::$conn =
                new PDO("mysql:host=localhost:3306;dbname=db_biblioteca",
                        "root",
-                       "bancodedados", $opcoes);
+                       "bancodeados", $opcoes);
         }
        
         return self::$conn;
