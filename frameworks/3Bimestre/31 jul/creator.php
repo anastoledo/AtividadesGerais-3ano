@@ -11,12 +11,11 @@ class Creator {
     private $tabelas;
 
     function __construct() {
-        if (isset($_GET['id'])) {
+        if (isset($_GET["id"])) {
             $this->buscaBancodeDados();
-        }
-        else{
+        } else {
         $this->criaDiretorios();
-        $this->conectar();
+        $this->conectar(1);
         $this->buscaTabelas();
         $this->ClassesModel();
         $this->ClasseConexao();
@@ -47,17 +46,13 @@ class Creator {
         $this->servidor=$_REQUEST["servidor"];
         $this->usuario=$_REQUEST["usuario"];
         $this->senha=$_REQUEST["senha"];
-       
-        if ($id == 1){
+        if ($id == 1) {
             $this->banco = $_POST["banco"];
-        }
-
-        else{
+        } else {
             $this->banco = "mysql";
         }
-
-        try{
-            $this->con = new PDO (
+        try {
+            $this->con = new PDO(
                 "mysql:host=" . $this->servidor . ";dbname=" . $this->banco,
                 $this->usuario,
                 $this->senha
@@ -66,24 +61,20 @@ class Creator {
             header("Location:index.php?msg=1");
         }
     }
-
     function buscaBancodeDados(){
         try {
-
             $this->conectar(0);
             $sql = "SHOW databases";
-            $query = this->con->query($sql);
+            $query = $this->con->query($sql);
             $databases = $query->fetchAll(PDO::FETCH_ASSOC);
             foreach ($databases as $database) {
-                echo "<option>".$database["Database"]."</option>";
+                echo "<option>" . $database["Database"] . "</option>";
             }
             $this->con = null;
-        }
-        catch (Exception $e){
+        } catch (Exception $e) {
             header("Location:index.php?msg=3");
         }
     }
-
     function buscaTabelas(){
        try {
            $sql = "SHOW TABLES";

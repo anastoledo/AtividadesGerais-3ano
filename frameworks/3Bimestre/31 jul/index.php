@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Formulário de Conexão</title>
     <link rel="stylesheet" href="estilos.css">
-    
+    <script src="js/funcoes.js"></script>
 </head>
 <body>
 <div class="container">
@@ -28,13 +28,16 @@
     <input type="text" id="usuario" name="usuario" required>
 
     <label for="senha">Senha:</label>
-    <input type="password" id="senha" name="senha" onblur="carregarBanco()" >
+    <input type="password" id="senha" name="senha" onblur="carregarBanco()">
 
     <label for="banco">Banco de Dados:</label>
-    <select name="banco" id="banco" required></select>
+    <select name="banco" id="banco">
 
+    </select>
+    <label id="carregando"></label>
     <button type="submit">Enviar</button>
 </form>
 </div>
+
 </body>
 </html>
